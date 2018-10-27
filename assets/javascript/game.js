@@ -4,6 +4,7 @@ var losses = 0;
 var success = true;
 var letterGuess = " "
 var badGuesses = [];
+var newWord = "";
 
 var wordList = ["alligator"]
 
@@ -13,9 +14,7 @@ console.log(wordList[0]);
 //This needs to print __ for each letter. Ex: alligator = _ _ _ _ _ _ _ _ _ 
 function printBlanks() {
     console.log(wordList);
-    var newWord = "";
-    //wordList[1].forEach(function (char) {
-        for(var i = 0; i < wordList[0].length; i++){
+    for (var i = 0; i < wordList[0].length; i++) {
         console.log("_");
         newWord = newWord + "_ ";
     };
@@ -41,7 +40,19 @@ onkeyup = function () {
 
         if (n >= 0) {
             console.log("yay!")
-            
+            for (var i = 0; i < wordList[0].length; i++) {
+                l = wordList[0].charAt(i);
+                if (l == letterGuess) {
+                    console.log(i);
+                    // var pos = newWord.charAt(i);
+                    // pos *= 2;
+                    newWord = newWord.replace(i, l);
+                    console.log(l);
+                    console.log(newWord)
+                }
+                
+            };
+            document.getElementById("wordWrapper").innerHTML = newWord;
         }
         else {
             console.log("boo :(")
