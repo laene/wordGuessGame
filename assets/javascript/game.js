@@ -5,6 +5,7 @@ var complete = false;
 var letterGuess = " "
 var badGuesses = [];
 var newWord = "";
+var chanceCounter = 5;
 
 var wordList = ["alligator", "gumbo", "beignets","jazz", "hurricane", "daquiri", "parades", "crawfish", "magnolia", "jambalaya", "lagniappe"]
 var current = 0;
@@ -20,6 +21,14 @@ function printBlanks() {
         newWord = newWord + "_ ";
     };
     document.getElementById("wordWrapper").innerHTML = newWord;
+}
+
+function remainingGuesses() {
+    chanceCounter -= 1;
+    document.getElementById("remaining").innerText = "Remaining Chances: " + chanceCounter;
+    if (chanceCounter === 0) {
+        trackScore();
+    }
 }
 
 function trackScore() {
@@ -65,6 +74,7 @@ onkeyup = function () {
                 console.log("boo :(")
                 badGuesses.push(letterGuess);
                 document.getElementById("guessedLetters").innerText = "You Already Guessed: " + badGuesses;
+                remainingGuesses();
             }
         }
         if (newWord.indexOf("_") < 0) {
@@ -87,6 +97,7 @@ window.onload = function now() {
     document.getElementById("wins").innerText = "Wins: " + wins;
     document.getElementById("losses").innerText = "Losses: " + losses;
     document.getElementById("guessedLetters").innerText = "You Already Guessed: " + badGuesses;
+    document.getElementById("remaining").innerText = "Remaining Chances: " + chanceCounter;
 };
 
 
