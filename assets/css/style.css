@@ -1,11 +1,12 @@
 body {
-    background-color: green;
+    background-image: url(https://us.123rf.com/450wm/finevector/finevector1701/finevector170100095/70468106-mardi-gras-holiday-background-with-fleur-de-lis-sign-pattern-vector-illustration-.jpg?ver=6);
     font-family: 'Rokkitt', serif;
     height: 100%;
+    width: 100%;
 }
 
 header {
-    background-color: grey;
+    background-color: black;
     color: white;
     text-align: center;
     font-size: 3em;
@@ -31,23 +32,29 @@ header {
     flex-wrap: wrap;
     justify-content: space-evenly;
     margin-top: 20px;
+    font-size: 150%;
+    text-align: center;
 }
 
 #infoWrapper {
     background-color: yellow;
     height: 400px;
     min-width: 200px;
+    padding: 20px;
+    align-content: center;
 }
 
 #wordWrapper {
     background-color: limegreen;
     height: 400px;
+    padding: 20px;
     min-width: 200px;
 }
 
 #imageWrapper {
     background-color: magenta;
     height: 400px;
+    padding: 20px;
     min-width: 200px;
 }
 

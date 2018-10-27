@@ -20,18 +20,19 @@ function printBlanks() {
         console.log("_");
         newWord = newWord + "_ ";
     };
-    document.getElementById("wordWrapper").innerHTML = newWord;
+    document.getElementById("word").innerHTML = newWord;
 }
 
 function remainingGuesses() {
     chanceCounter -= 1;
-    document.getElementById("remaining").innerText = "Remaining Chances: " + chanceCounter;
+    document.getElementById("remaining").innerText = chanceCounter;
     if (chanceCounter === 0) {
         gameOver();
     }
 }
 
 function gameOver() {
+    document.getElementById("previousWord").innerText = wordList[current];
     if (complete === true) {
         wins++;
         console.log("New Score: " + wins + " wins!");
@@ -48,8 +49,9 @@ function gameOver() {
     badGuesses = [];
     chanceCounter=5;
     printBlanks();
-    document.getElementById("guessedLetters").innerText = "You Already Guessed: " + badGuesses;
-    document.getElementById("remaining").innerText = "Remaining Chances: " + chanceCounter;
+
+    document.getElementById("remaining").innerText = chanceCounter;
+    document.getElementById("guessedLetters").innerText = badGuesses;
 
     if (current === wordList.length) {
         current = 0;
@@ -79,13 +81,13 @@ onkeyup = function () {
                 }
 
             };
-            document.getElementById("wordWrapper").innerHTML = newWord;
+            document.getElementById("word").innerHTML = newWord;
         }
         else {
             if (badGuesses.indexOf(letterGuess) < 0) {
                 console.log("boo :(")
                 badGuesses.push(letterGuess);
-                document.getElementById("guessedLetters").innerText = "You Already Guessed: " + badGuesses;
+                document.getElementById("guessedLetters").innerText = badGuesses;
                 remainingGuesses();
             }
         }
@@ -103,8 +105,8 @@ onkeyup = function () {
 window.onload = function now() {
     document.getElementById("wins").innerText = "Wins: " + wins;
     document.getElementById("losses").innerText = "Losses: " + losses;
-    document.getElementById("guessedLetters").innerText = "You Already Guessed: " + badGuesses;
-    document.getElementById("remaining").innerText = "Remaining Chances: " + chanceCounter;
+    document.getElementById("guessedLetters").innerText = badGuesses;
+    document.getElementById("remaining").innerText = chanceCounter;
 };
 
 
