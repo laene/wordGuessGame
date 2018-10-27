@@ -51,6 +51,11 @@ header {
     min-width: 200px;
 }
 
+.blank {
+    background-color: purple;
+    padding: 20px;
+}
+
 footer {
     background-color: black;
     color: white;
