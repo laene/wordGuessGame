@@ -5,22 +5,20 @@ var success = true;
 var letterGuess = " "
 var badGuesses = [];
 
-var wordList = {
-    1: ["a", "l", "l", "i", "g", "a", "t", "o", "r"]
-}
+var wordList = ["alligator"]
 
 //Yay! I used correct syntax for my first word!
-console.log(wordList[1]);
+console.log(wordList[0]);
 
 //This needs to print __ for each letter. Ex: alligator = _ _ _ _ _ _ _ _ _ 
-//Now it prints _,_,_,_,_,_ but I don't want commas. Also I can't figure out append w/o Jquery
 function printBlanks() {
     console.log(wordList);
     var newWord = "";
-    wordList[1].forEach(function (element) {
+    //wordList[1].forEach(function (char) {
+        for(var i = 0; i < wordList[0].length; i++){
         console.log("_");
         newWord = newWord + "_ ";
-    });
+    };
     document.getElementById("wordWrapper").innerHTML = newWord;
 }
 
@@ -39,13 +37,16 @@ onkeyup = function () {
     printBlanks(wordList);
     onkeyup = function () {
         letterGuess = event.key;
-        var n = wordList[1].indexOf(letterGuess);
+        var n = wordList[0].indexOf(letterGuess);
 
         if (n >= 0) {
             console.log("yay!")
+            
         }
         else {
             console.log("boo :(")
+            badGuesses.push(letterGuess);
+            document.getElementById("guessedLetters").innerText = "You Already Guessed: " + badGuesses;
         }
     }
 
