@@ -68,7 +68,10 @@ onkeyup = function () {
         if (newWord.indexOf("_") < 0) {
             complete = true;
             trackScore();
-            
+            complete = false;
+            current++;
+            newWord = "";
+            printBlanks();
         }
     }
 
