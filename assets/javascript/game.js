@@ -61,9 +61,11 @@ onkeyup = function () {
             document.getElementById("wordWrapper").innerHTML = newWord;
         }
         else {
-            console.log("boo :(")
-            badGuesses.push(letterGuess);
-            document.getElementById("guessedLetters").innerText = "You Already Guessed: " + badGuesses;
+            if (badGuesses.indexOf(letterGuess) < 0) {
+                console.log("boo :(")
+                badGuesses.push(letterGuess);
+                document.getElementById("guessedLetters").innerText = "You Already Guessed: " + badGuesses;
+            }
         }
         if (newWord.indexOf("_") < 0) {
             complete = true;
@@ -71,6 +73,7 @@ onkeyup = function () {
             complete = false;
             current++;
             newWord = "";
+            badGuesses =[];
             printBlanks();
         }
     }
