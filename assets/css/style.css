@@ -1,0 +1,63 @@
+body {
+    background-color: green;
+    font-family: 'Rokkitt', serif;
+    height: 100%;
+}
+
+header {
+    background-color: grey;
+    color: white;
+    text-align: center;
+    font-size: 3em;
+    width: 100%;
+    padding: 20px;
+}
+
+.content {
+    margin: auto;
+    width: 80%;
+}
+
+#directions {
+    background-color: gold;
+    text-align: center;
+    font-size: 2em;
+    margin-top: 20px;
+}
+
+.game {
+    background-color: darkmagenta;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    margin-top: 20px;
+}
+
+#infoWrapper {
+    background-color: yellow;
+    height: 400px;
+    min-width: 200px;
+}
+
+#wordWrapper {
+    background-color: limegreen;
+    height: 400px;
+    min-width: 200px;
+}
+
+#imageWrapper {
+    background-color: magenta;
+    height: 400px;
+    min-width: 200px;
+}
+
+footer {
+    background-color: black;
+    color: white;
+    text-align: center;
+    font-size: 1em;
+    width: 100%;
+    padding: 10px;
+    position: fixed;
+    bottom: 0;
+}
