@@ -7,7 +7,7 @@ var badGuesses = [];
 var newWord = "";
 var chanceCounter = 5;
 
-var wordList = ["alligator", "gumbo", "beignets", "jazz", "hurricane", "daquiri", "parades", "crawfish", "magnolia", "jambalaya", "lagniappe"]
+var wordList = ["alligator", "gumbo", "beignets", "jazz", "hurricane", "parades", "crawfish", "magnolia", "jambalaya", "lagniappe"]
 var current = 0;
 
 //Yay! I used correct syntax for my first word!

@@ -9,43 +9,53 @@
     <link href="https://fonts.googleapis.com/css?family=Rokkitt" rel="stylesheet">
 </head>
 <body>
+    <!-- Title at top of screen (think: "Who Dat Say Dey Gonna Beat Dem Saints?") -->
     <header>
         <h1>Who Dat Say Dey Gonna Guess Dem Words?</h1>
     </header>
 
+    <!--"Content" holds the game and the directions for the game-->
     <div class = "content">
+    
+    <!--"directions" holds the game instructions-->
         <div id = "directions">
             <h2>Press any key to start!</h2>
             <p>I'm thinking of something you'll find in New Orleans.</p>
-                <p>Can you guess the word?</p>
+            <p>Can you guess the word?</p>
         </div>
+    <!--All div ids related to js game can be found within "game" div-->
         <div class = "game">
+    <!--"infoWrapper" holds info about score and guesses; "js..." will be overwritten  -->
             <div id="infoWrapper">
                 <br><br><br>
-                <p id="wins">wins!</p>
+                <p id="wins">js losses!</p>
                 <br>
-                <p id="losses">losses!</p>
+                <p id="losses">js wins!</p>
                 <br>
                 <p>You Already Guessed:</p>
                 <br>
-                <p id="guessedLetters">Guessed Letters</p>
+                <p id="guessedLetters">js guesses letters!</p>
                 <br>
                 <p>Remaining Guesses:</p>
                 <br>
-                <p id="remaining">Remaining Guesses</p>
+                <p id="remaining">js remaining chances!</p>
             </div>
+    <!-- "wordWrapper" is the box where the hangman game takes place -->
             <div id="wordWrapper">
                 <br><br><br><br>
                 <p id="word"></p>
             </div>
+    <!--"imageWrapper" holds the answer from the previous round and a fun related image-->
             <div id="imageWrapper">
-                <br><br><br><br>
+                <br><br>
+                <p>Answer:</p>
+                <br><br>
                 <p id="previousWord"></p>
             </div>
 
         </div>
     </div>
-
+    <!-- Here's a fun and accurate quote about New Orleans that inspired this game! -->
     <footer>
         <p>In New Orleans, culture doesn't come down from on high. It bubbles up from the streets. -- Ellis Marsalis</p>
     </footer>
