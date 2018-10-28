@@ -17,7 +17,7 @@ var newWord = "";
 var chanceCounter = 8;
 
 // This is my array of strings! It stores all the words I will be using.
-var wordList = ["alligator", "gumbo", "beignets", "jazz", "hurricane", "parades", "crawfish", "magnolia", "jambalaya", "lagniappe"]
+var wordList = ["alligator", "gumbo", "beignets", "jazz", "floats", "parades", "crawfish", "pralines", "jambalaya", "lagniappe"]
 
 //This variable will be used to progress through the wordList array each round.
 var current = 0;
@@ -140,6 +140,7 @@ function guessingTime() {
     }
 }
 
+//GAME CODE!!
 onkeyup = function () {
     printBlanks(wordList);
     onkeyup = function () {
