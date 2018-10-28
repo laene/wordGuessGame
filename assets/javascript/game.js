@@ -1,21 +1,30 @@
-//object of arrays for word list
+// These global variables track the score
 var wins = 0;
 var losses = 0;
 var complete = false;
-var letterGuess = " "
+
+// This global variable is for the user input guess and will be constantly changed as game is played
+var letterGuess = ""
+
+//This empty array will store user guesses that are not found in the current word string
 var badGuesses = [];
+
+//This string =  "_ _ _" at the start of each round, and is updated as user guesses correctly
+//In other words, newWord stores all the blanks.
 var newWord = "";
+
+//This variable is used to track how many wrong guesses remain. 
 var chanceCounter = 8;
 
+// This is my array of strings! It stores all the words I will be using.
 var wordList = ["alligator", "gumbo", "beignets", "jazz", "hurricane", "parades", "crawfish", "magnolia", "jambalaya", "lagniappe"]
+
+//This variable will be used to progress through the wordList array each round.
 var current = 0;
 
-//Yay! I used correct syntax for my first word!
-console.log(wordList[current]);
-
-//This needs to print __ for each letter. Ex: alligator = _ _ _ _ _ _ _ _ _ 
+//This function prints _  for each letter in the current string. Will overwrite itself as needed. 
+//Ex: alligator = _ _ _ _ _ _ _ _ _ 
 function printBlanks() {
-    console.log(wordList);
     for (var i = 0; i < wordList[current].length; i++) {
         console.log("_");
         newWord = newWord + "_ ";
@@ -23,6 +32,8 @@ function printBlanks() {
     document.getElementById("word").innerHTML = newWord;
 }
 
+//This function is just a counter tracker thingamajig. With each wrong guess, it subtracts one.
+//Prints new number of chances remaining to the "remaining" p tag.
 function remainingGuesses() {
     chanceCounter -= 1;
     document.getElementById("remaining").innerText = chanceCounter;
@@ -31,8 +42,9 @@ function remainingGuesses() {
     }
 }
 
-function gameOver() {
-    document.getElementById("previousWord").innerText = wordList[current];
+//This function tracks the score when called in Game Over!
+//It also prints the updated score to the corresponding p tags on the screen.
+function trackScore() {
     if (complete === true) {
         wins++;
         console.log("New Score: " + wins + " wins!");
@@ -43,58 +55,95 @@ function gameOver() {
         console.log("New Score: " + losses + " losses!");
         document.getElementById("losses").innerText = "Losses: " + losses;
     }
+}
+
+//This function prints the answer when called! That's all. :) 
+function printAnswer() {
+    document.getElementById("previousWord").innerText = wordList[current];
+}
+
+//This function resets the game each round!
+function gameOver() {
+    printAnswer();
+    trackScore();
     complete = false;
     current++;
     newWord = "";
     badGuesses = [];
-    chanceCounter=8;
+    chanceCounter = 8;
     printBlanks();
 
     document.getElementById("remaining").innerText = chanceCounter;
     document.getElementById("guessedLetters").innerText = badGuesses;
 
+    //This part of the function is supposed to restart the game if it runs out of words.
+    //It doesn't really work right now, but that's ok.
     if (current === wordList.length) {
         current = 0;
     }
 };
 
+//This function is the meat and potatoes of the game! Here's where the action happens!
+function correctGuess() {
+    //This part updates the blanks in newWord for each guessed letter.
+    var pos = 0;
+    var oldWord = newWord;
+    for (var i = 0; i < wordList[current].length; i++) {
+        //This part will store the character value at a specific point in the string of the current word
+        l = wordList[current].charAt(i);
+        if (l == letterGuess) {
+            //Because newWord is made up of _ and spaces, you have to multiply by two to find corresponding character in the current word string.
+            pos = i * 2;
+            //Substring function goes to a specific coordinate in the "_ _ _" to replace _ with l.
+            //This part took some serious guessing and checking!
+            newWord = oldWord.substr(0, pos) + l + " " + oldWord.substr(pos + 2, oldWord.length + 1);
+            //This makes sure to reset oldWord to the new "_ l _" word. 
+            //This is useful for when a letter appears twice.
+            oldWord = newWord;
+        }
+        //Now it prints the new blanks and letter combination to the screen.
+    };
+    document.getElementById("word").innerHTML = newWord;
+}
+
+function incorrectGuess() {
+    //BOO! Now it tracks wrong guesses.
+    if (badGuesses.indexOf(letterGuess) < 0) {
+        //Adds incorrect guesses to array.
+        badGuesses.push(letterGuess);
+        //Prints updated array to the corresponding p tag on screen;
+        document.getElementById("guessedLetters").innerText = badGuesses;
+        //Calls remaining guesses function and can end the game.
+        remainingGuesses();
+    }
+}
+
+function guessingTime() {
+    //Gets user guess, and assigns a value to that guess.
+    //If the guess is found in the string (which can be kind of treated like an array), n will have a positive integer value.
+    letterGuess = event.key;
+    var n = wordList[current].indexOf(letterGuess);
+    //Determines if user guess IS in the character string, and what to do next.
+    if (n >= 0) {
+        //YAY! Calls the correct guess function to print letters.
+        correctGuess();
+    }
+    //User guess is NOT in the string.
+    else {
+        incorrectGuess();
+
+    }
+    //Defines winning condition and can end the game
+    if (newWord.indexOf("_") < 0) {
+        complete = true;
+        gameOver();
+    }
+}
+
 onkeyup = function () {
     printBlanks(wordList);
     onkeyup = function () {
-        letterGuess = event.key;
-        var n = wordList[current].indexOf(letterGuess);
-
-        if (n >= 0) {
-            console.log("yay!")
-            var pos = 0;
-            var oldWord = newWord;
-            for (var i = 0; i < wordList[current].length; i++) {
-                l = wordList[current].charAt(i);
-                if (l == letterGuess) {
-                    console.log(i);
-                    // var pos = newWord.charAt(i);
-                    pos = i * 2;
-                    newWord = oldWord.substr(0, pos) + l + " " + oldWord.substr(pos + 2, oldWord.length + 1);
-                    oldWord = newWord;
-                    console.log(l);
-                    console.log(newWord)
-                }
-
-            };
-            document.getElementById("word").innerHTML = newWord;
-        }
-        else {
-            if (badGuesses.indexOf(letterGuess) < 0) {
-                console.log("boo :(")
-                badGuesses.push(letterGuess);
-                document.getElementById("guessedLetters").innerText = badGuesses;
-                remainingGuesses();
-            }
-        }
-        if (newWord.indexOf("_") < 0) {
-            complete = true;
-            gameOver();
-        }
+        guessingTime();
     }
 
 }
