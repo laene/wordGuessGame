@@ -5,7 +5,7 @@ var complete = false;
 var letterGuess = " "
 var badGuesses = [];
 var newWord = "";
-var chanceCounter = 5;
+var chanceCounter = 8;
 
 var wordList = ["alligator", "gumbo", "beignets", "jazz", "hurricane", "parades", "crawfish", "magnolia", "jambalaya", "lagniappe"]
 var current = 0;
@@ -47,7 +47,7 @@ function gameOver() {
     current++;
     newWord = "";
     badGuesses = [];
-    chanceCounter=5;
+    chanceCounter=8;
     printBlanks();
 
     document.getElementById("remaining").innerText = chanceCounter;
