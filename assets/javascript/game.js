@@ -33,7 +33,7 @@ function printBlanks() {
 }
 
 //This function is just a counter tracker thingamajig. With each wrong guess, it subtracts one.
-//Prints new number of chances remaining to the "remaining" p tag.
+//Prints new number of chances remaining to the "remaining" p div.
 function remainingGuesses() {
     chanceCounter -= 1;
     document.getElementById("remaining").innerText = chanceCounter;
@@ -43,7 +43,7 @@ function remainingGuesses() {
 }
 
 //This function tracks the wins/losses score when called in Game Over!
-//It also prints the updated score to the corresponding p tags on the screen.
+//It also prints the updated score to the corresponding p divs on the screen.
 function trackScore() {
     if (complete === true) {
         wins++;
@@ -58,6 +58,7 @@ function trackScore() {
 }
 
 //This function prints the answer when called! That's all. :) 
+//This function is where I want to add code for showing the images.
 function printAnswer() {
     document.getElementById("previousWord").innerText = wordList[current];
 }
@@ -119,6 +120,7 @@ function guessingTime() {
     //Gets user guess, and assigns a value to that guess.
     //If the guess is found in the string (which can be kind of treated like an array), n will have a positive integer value.
     letterGuess = event.key;
+    letterGuess = letterGuess.toLowerCase();
     var n = wordList[current].indexOf(letterGuess);
     //Determines if user guess IS in the character string, and what to do next.
     if (n >= 0) {
@@ -128,7 +130,6 @@ function guessingTime() {
     //User guess is NOT in the string.
     else {
         incorrectGuess();
-
     }
     //Defines winning condition and can end the game
     if (newWord.indexOf("_") < 0) {
