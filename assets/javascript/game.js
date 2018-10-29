@@ -26,7 +26,6 @@ var current = 0;
 //Ex: alligator = _ _ _ _ _ _ _ _ _ 
 function printBlanks() {
     for (var i = 0; i < wordList[current].length; i++) {
-        console.log("_");
         newWord = newWord + "_ ";
     };
     document.getElementById("word").innerHTML = newWord;
