@@ -1,5 +1,5 @@
 body {
-    background-image: url(https://us.123rf.com/450wm/finevector/finevector1701/finevector170100095/70468106-mardi-gras-holiday-background-with-fleur-de-lis-sign-pattern-vector-illustration-.jpg?ver=6);
+    background-image: url(../images/1background.jpg);
     font-family: 'Rokkitt', serif;
     height: 100%;
     width: 100%;
@@ -65,7 +65,7 @@ header {
 
 .image {
     width: 150px;
-    
+
 }
 footer {
     background-color: black;

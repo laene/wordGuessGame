@@ -42,7 +42,7 @@ function remainingGuesses() {
     }
 }
 
-//This function tracks the score when called in Game Over!
+//This function tracks the wins/losses score when called in Game Over!
 //It also prints the updated score to the corresponding p tags on the screen.
 function trackScore() {
     if (complete === true) {
@@ -71,16 +71,13 @@ function gameOver() {
     newWord = "";
     badGuesses = [];
     chanceCounter = 8;
-    printBlanks();
-
     document.getElementById("remaining").innerText = chanceCounter;
     document.getElementById("guessedLetters").innerText = badGuesses;
-
-    //This part of the function is supposed to restart the game if it runs out of words.
-    //It doesn't really work right now, but that's ok.
+    //This part of the function restarts the game if it runs out of words.
     if (current === wordList.length) {
         current = 0;
     }
+    printBlanks();
 };
 
 //This function is the meat and potatoes of the game! Here's where the action happens!
